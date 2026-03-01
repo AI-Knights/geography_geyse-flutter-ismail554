@@ -40,7 +40,6 @@ dependencies:
   firebase_storage: ^13.0.4
   firebase_core: ^4.2.1
   google_sign_in: ^6.2.1
-  flutter_native_splash: ^2.4.7
 
 
 flutter_icons:

@@ -1,0 +1,137 @@
+Analyzing Quiz_APP...
+
+warning - lib/custom_widgets/custom_q_quantity.dart:3:8 - Unused import: 'package:geography_geyser/core/app_colors.dart'. Try removing the import directive. - unused_import
+warning - lib/provider/auth_provider/signup_provider/verify_otp_provider.dart:3:8 - Unused import: 'package:flutter_secure_storage/flutter_secure_storage.dart'. Try removing the import directive. - unused_import
+warning - lib/views/auth/sign_up/reg_congratulations.dart:8:8 - Unused import: 'package:geography_geyser/views/home/homepage.dart'. Try removing the import directive. - unused_import
+warning - lib/views/auth/sign_up/reg_congratulations.dart:9:8 - Unused import: 'package:geography_geyser/views/home/op_mod_settings.dart'. Try removing the import directive. - unused_import
+warning - lib/views/custom_widgets/module_selection_row.dart:60:10 - The value of the local variable 'shouldAnimate' isn't used. Try removing the variable or using it. - unused_local_variable
+warning - lib/views/modules/quiz_complete.dart:7:8 - Unused import: 'package:geography_geyser/views/custom_widgets/custom_login_button.dart'. Try removing the import directive. - unused_import
+warning - lib/views/modules/quiz_complete.dart:8:8 - Unused import: 'package:geography_geyser/views/custom_widgets/module_button.dart'. Try removing the import directive. - unused_import
+warning - lib/views/profile/settings/privacy_settings.dart:30:8 - The value of the field '_obscureOldPassword' isn't used. Try removing the field, or using it. - unused_field
+   info - lib/core/app_colors.dart:30:44 - Instances of 'Color' should be created using an 8-digit hexadecimal integer (such as '0xFFFFFFFF'). - use_full_hex_values_for_flutter_colors
+   info - lib/custom_widgets/custom_module.dart:48:64 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/custom_widgets/custom_q_quantity.dart:6:7 - The type name 'Custom_Q_quantity' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/custom_widgets/custom_q_quantity.dart:39:34 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/custom_widgets/cutom_timer.dart:34:34 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/models/module_model.dart:45:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/models/module_model.dart:48:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/models/signup_model.dart:1:7 - The type name 'SignUp_model' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/models/signup_model.dart:12:35 - Unnecessary 'new' keyword. Try removing the 'new' keyword. - unnecessary_new
+   info - lib/models/signup_model.dart:17:39 - Unnecessary 'new' keyword. Try removing the 'new' keyword. - unnecessary_new
+   info - lib/models/signup_model.dart:17:39 - Unnecessary constructor invocation. Try using a collection literal. - prefer_collection_literals
+   info - lib/models/signup_model.dart:18:23 - Unnecessary 'this.' qualifier. Try removing 'this.'. - unnecessary_this
+   info - lib/models/signup_model.dart:19:23 - Unnecessary 'this.' qualifier. Try removing 'this.'. - unnecessary_this
+   info - lib/models/signup_model.dart:20:9 - Unnecessary 'this.' qualifier. Try removing 'this.'. - unnecessary_this
+   info - lib/models/signup_model.dart:21:22 - Unnecessary 'this.' qualifier. Try removing 'this.'. - unnecessary_this
+   info - lib/models/signup_model.dart:23:33 - Unnecessary 'this.' qualifier. Try removing 'this.'. - unnecessary_this
+   info - lib/models/signup_model.dart:40:39 - Unnecessary 'new' keyword. Try removing the 'new' keyword. - unnecessary_new
+   info - lib/models/signup_model.dart:40:39 - Unnecessary constructor invocation. Try using a collection literal. - prefer_collection_literals
+   info - lib/models/signup_model.dart:41:18 - Unnecessary 'this.' qualifier. Try removing 'this.'. - unnecessary_this
+   info - lib/models/signup_model.dart:42:21 - Unnecessary 'this.' qualifier. Try removing 'this.'. - unnecessary_this
+   info - lib/provider/auth_provider/login_provider.dart:21:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:30:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:31:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:39:9 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:41:11 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:44:11 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:53:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:97:21 - Type could be non-nullable. Try changing the type to be non-nullable. - unnecessary_nullable_for_final_variable_declarations
+   info - lib/provider/auth_provider/login_provider.dart:102:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:111:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:112:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:143:9 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:150:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:183:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:187:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:191:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:193:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:196:9 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:202:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:204:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:207:9 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/login_provider.dart:211:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:22:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:23:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:32:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:52:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:53:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:54:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:69:9 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:79:9 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:96:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:104:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:111:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:119:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:126:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:127:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:150:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:166:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:167:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:168:48 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:170:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:171:36 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/signup_provider.dart:172:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/verify_otp_provider.dart:17:5 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/verify_otp_provider.dart:28:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/verify_otp_provider.dart:39:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/verify_otp_provider.dart:40:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/verify_otp_provider.dart:46:9 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/auth_provider/signup_provider/verify_otp_provider.dart:58:7 - Don't invoke 'print' in production code. Try using a logging framework. - avoid_print
+   info - lib/provider/module_provider/subject_provider.dart:5:8 - The import of 'package:flutter/material.dart' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/foundation.dart'. Try removing the import directive. - unnecessary_import
+   info - lib/provider/settings_provider/account_delete_provider.dart:44:56 - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check. - use_build_context_synchronously
+   info - lib/provider/settings_provider/account_delete_provider.dart:46:11 - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check. - use_build_context_synchronously
+   info - lib/provider/settings_provider/account_delete_provider.dart:50:11 - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check. - use_build_context_synchronously
+   info - lib/provider/settings_provider/account_delete_provider.dart:54:11 - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check. - use_build_context_synchronously
+   info - lib/views/auth/forgot_pass/new_pass.dart:12:7 - The type name 'NewPass_screen' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/auth/forgot_pass/new_pass.dart:19:7 - The type name '_NewPass_screenState' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/auth/forgot_pass/new_pass.dart:60:44 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/auth/forgot_pass/verify_screen.dart:119:42 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/auth/login/login.dart:301:41 - Use interpolation to compose strings and values. Try using string interpolation to build the composite string. - prefer_interpolation_to_compose_strings
+   info - lib/views/auth/sign_up/reg_congratulations.dart:11:7 - The type name 'RegCongratulations_Screen' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/auth/sign_up/reg_congratulations.dart:19:7 - The type name '_RegCongratulations_ScreenState' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/auth/sign_up/verify_otp.dart:107:42 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/auth/sign_up/verify_otp.dart:299:37 - Statements in an if should be enclosed in a block. Try wrapping the statement in a block. - curly_braces_in_flow_control_structures
+   info - lib/views/custom_widgets/buildTextField.dart:1:1 - The file name 'buildTextField.dart' isn't a lower_case_with_underscores identifier. Try changing the name to follow the lower_case_with_underscores style. - file_names
+   info - lib/views/custom_widgets/custom_toggle_button.dart:12:9 - Parameter 'key' could be a super parameter. Trying converting 'key' to a super parameter. - use_super_parameters
+   info - lib/views/custom_widgets/module_button.dart:32:35 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/custom_widgets/module_option.dart:27:39 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/custom_widgets/module_selection_row.dart:68:39 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/home/homepage.dart:384:30 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/home/homepage.dart:392:33 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/home/homepage.dart:447:32 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/home/homepage.dart:453:35 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/home/homepage.dart:528:35 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/home/op_mod_settings.dart:202:32 - Unnecessary use of 'toList' in a spread. Try removing the invocation of 'toList'. - unnecessary_to_list_in_spreads
+   info - lib/views/modules/module_home.dart:72:44 - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check. - use_build_context_synchronously
+   info - lib/views/modules/module_home.dart:198:35 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/modules/quiz_result.dart:16:7 - The type name 'QuizResult_Screen' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/modules/quiz_result.dart:23:7 - The type name '_QuizResult_ScreenState' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/modules/quiz_result.dart:148:47 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/modules/quiz_result.dart:236:24 - Unnecessary use of 'toList' in a spread. Try removing the invocation of 'toList'. - unnecessary_to_list_in_spreads
+   info - lib/views/modules/quiz_result.dart:439:38 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/modules/quiz_result.dart:467:10 - The variable name 'CustomQuizTopicOption' isn't a lowerCamelCase identifier. Try changing the name to follow the lowerCamelCase style. - non_constant_identifier_names
+   info - lib/views/modules/quiz_screen.dart:583:29 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/modules/quiz_screen.dart:585:27 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/modules/select_time.dart:13:7 - The type name 'SelectTime_screen' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/modules/select_time.dart:27:7 - The type name '_SelectTime_screenState' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/modules/time_out_dialog.dart:11:9 - Parameter 'key' could be a super parameter. Trying converting 'key' to a super parameter. - use_super_parameters
+   info - lib/views/profile/profile_screen.dart:1:8 - The import of 'package:flutter/foundation.dart' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart'. Try removing the import directive. - unnecessary_import
+   info - lib/views/profile/profile_screen.dart:310:36 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/profile/profile_screen.dart:500:33 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/profile/profile_screen.dart:544:31 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/profile/settings/app_info.dart:213:50 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/profile/settings/app_info.dart:253:31 - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss. Try replacing the use of the deprecated member with the replacement. - deprecated_member_use
+   info - lib/views/profile/settings/general_settings.dart:18:7 - The type name 'GeneralSettings_Screen' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/profile/settings/general_settings.dart:25:7 - The type name '_GeneralSettings_ScreenState' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/profile/settings/general_settings.dart:65:24 - Missing type annotation. Try adding a type annotation. - strict_top_level_inference
+   info - lib/views/profile/settings/general_settings.dart:192:32 - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check. - use_build_context_synchronously
+   info - lib/views/profile/settings/general_settings.dart:200:32 - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check. - use_build_context_synchronously
+   info - lib/views/profile/settings/general_settings.dart:225:13 - Statements in an if should be enclosed in a block. Try wrapping the statement in a block. - curly_braces_in_flow_control_structures
+   info - lib/views/profile/settings/general_settings.dart:227:13 - Statements in an if should be enclosed in a block. Try wrapping the statement in a block. - curly_braces_in_flow_control_structures
+   info - lib/views/profile/settings/general_settings.dart:249:9 - Don't use 'BuildContext's across async gaps. Try rewriting the code to not use the 'BuildContext', or guard the use with a 'mounted' check. - use_build_context_synchronously
+   info - lib/views/profile/settings/privacy_settings.dart:17:7 - The type name 'PrivacySettings_Screen' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/profile/settings/privacy_settings.dart:24:7 - The type name '_PrivacySettings_ScreenState' isn't an UpperCamelCase identifier. Try changing the name to follow the UpperCamelCase style. - camel_case_types
+   info - lib/views/profile/settings/privacy_settings.dart:210:35 - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check. Guard a 'State.context' use with a 'mounted' check on the State, and other BuildContext use with a 'mounted' check on the BuildContext. - use_build_context_synchronously
+   info - lib/views/profile/settings/privacy_settings.dart:226:35 - Don't use 'BuildContext's across async gaps, guarded by an unrelated 'mounted' check. Guard a 'State.context' use with a 'mounted' check on the State, and other BuildContext use with a 'mounted' check on the BuildContext. - use_build_context_synchronously
+
+133 issues found.

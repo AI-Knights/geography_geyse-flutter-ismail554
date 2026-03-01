@@ -19,10 +19,11 @@ import 'package:geography_geyser/provider/forgot_password/forgot_pass_provider.d
 import 'package:geography_geyser/provider/forgot_password/new_pass_set_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:geography_geyser/splash/splash_screen.dart';
+import 'package:geography_geyser/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
     MultiProvider(
       providers: [
