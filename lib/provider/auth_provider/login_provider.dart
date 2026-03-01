@@ -18,7 +18,7 @@ class LoginProvider extends ChangeNotifier {
     BuildContext context,
   ) async {
     isLoading.value = true;
-    print('Trying login with: $email / $password');
+    debugPrint('Trying login with: $email / $password');
 
     try {
       final response = await http.post(
@@ -27,8 +27,8 @@ class LoginProvider extends ChangeNotifier {
         body: jsonEncode({'email': email, 'password': password}),
       );
 
-      print('Response Status Code: ${response.statusCode}');
-      print('Response Body: ${response.body}');
+      debugPrint('Response Status Code: ${response.statusCode}');
+      debugPrint('Response Body: ${response.body}');
 
       final Map<String, dynamic> responseData = jsonDecode(response.body);
 
@@ -36,12 +36,12 @@ class LoginProvider extends ChangeNotifier {
         await _storeLoginData(responseData);
 
         // Print tokens after successful login
-        print('Login Successful!');
+        debugPrint('Login Successful!');
         if (responseData.containsKey('access_token')) {
-          print('Access Token: ${responseData['access_token']}');
+          debugPrint('Access Token: ${responseData['access_token']}');
         }
         if (responseData.containsKey('refresh_token')) {
-          print('Refresh Token: ${responseData['refresh_token']}');
+          debugPrint('Refresh Token: ${responseData['refresh_token']}');
         }
 
         return responseData;
@@ -50,7 +50,7 @@ class LoginProvider extends ChangeNotifier {
         throw responseData;
       }
     } catch (e) {
-      print("Login Error: $e");
+      debugPrint("Login Error: $e");
       rethrow;
     } finally {
       isLoading.value = false;
@@ -94,12 +94,12 @@ class LoginProvider extends ChangeNotifier {
       }
 
       // ৩. শুধু email নিবো
-      final String? email = googleUser.email;
-      if (email == null || email.isEmpty) {
+      final String email = googleUser.email;
+      if (email.isEmpty) {
         throw {'message': 'Failed to get email from Google'};
       }
 
-      print('📧 Got email: $email');
+      debugPrint('📧 Got email: $email');
 
       // ৪. তোমার API-তে পাঠাচ্ছি
       final response = await http.post(
@@ -108,8 +108,8 @@ class LoginProvider extends ChangeNotifier {
         body: jsonEncode({'email': email}),
       );
 
-      print('API Status: ${response.statusCode}');
-      print('API Body: ${response.body}');
+      debugPrint('API Status: ${response.statusCode}');
+      debugPrint('API Body: ${response.body}');
 
       final Map<String, dynamic> responseData = jsonDecode(response.body);
 
@@ -140,14 +140,14 @@ class LoginProvider extends ChangeNotifier {
           );
         }
 
-        print('🎉 Google Login Successful!');
+        debugPrint('🎉 Google Login Successful!');
         return responseData;
       } else {
         // API error
         throw responseData;
       }
     } catch (e) {
-      print('Google Login Error: $e');
+      debugPrint('Google Login Error: $e');
 
       String message = 'Google login failed';
 
@@ -180,34 +180,34 @@ class LoginProvider extends ChangeNotifier {
     final storage = const FlutterSecureStorage();
     await storage.deleteAll();
 
-    print("🚪 All login data cleared (both Secure + Shared).");
+    debugPrint("🚪 All login data cleared (both Secure + Shared).");
   }
 
   static Future<void> printAllStorageData() async {
-    print("========== Checking Stored Data ==========");
+    debugPrint("========== Checking Stored Data ==========");
 
     final secureStorage = const FlutterSecureStorage();
     final secureData = await secureStorage.readAll();
-    print("🔐 Secure Storage:");
+    debugPrint("🔐 Secure Storage:");
     if (secureData.isEmpty) {
-      print("  (empty)");
+      debugPrint("  (empty)");
     } else {
       secureData.forEach((key, value) {
-        print("  $key : $value");
+        debugPrint("  $key : $value");
       });
     }
 
     final prefs = await SharedPreferences.getInstance();
     final prefKeys = prefs.getKeys();
-    print("📦 Shared Preferences:");
+    debugPrint("📦 Shared Preferences:");
     if (prefKeys.isEmpty) {
-      print("  (empty)");
+      debugPrint("  (empty)");
     } else {
       for (String key in prefKeys) {
-        print("  $key : ${prefs.get(key)}");
+        debugPrint("  $key : ${prefs.get(key)}");
       }
     }
 
-    print("============================================");
+    debugPrint("============================================");
   }
 }

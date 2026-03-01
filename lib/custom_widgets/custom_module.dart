@@ -45,7 +45,7 @@ class CustomModule extends StatelessWidget {
         ? Colors.blueAccent
         : (borderColor ?? Colors.grey.shade300);
     final effectiveBorderWidth = isSelected ? 1.5 : 1.0;
-    final effectiveShadowColor = (shadowColor ?? Colors.black).withOpacity(0.1);
+    final effectiveShadowColor = (shadowColor ?? Colors.black).withValues(alpha: 0.1);
     final effectiveTextStyle = textStyle ??
         FontManager.headerSubtitleText(
           fontSize: fontSize ?? 20,

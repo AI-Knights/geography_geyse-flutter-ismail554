@@ -5,8 +5,6 @@ import 'package:geography_geyser/core/app_strings.dart';
 import 'package:geography_geyser/core/font_manager.dart';
 import 'package:geography_geyser/custom_widgets/elevated_button.dart';
 import 'package:geography_geyser/views/auth/login/login.dart';
-import 'package:geography_geyser/views/home/homepage.dart';
-import 'package:geography_geyser/views/home/op_mod_settings.dart';
 
 class RegCongratulations_Screen extends StatefulWidget {
   const RegCongratulations_Screen({super.key});

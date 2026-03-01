@@ -199,7 +199,7 @@ class _OptionalModuleSettingsState extends State<OptionalModuleSettings> {
                                   },
                                 ),
                               );
-                            }).toList(),
+                            }),
                           ],
                         );
                       },

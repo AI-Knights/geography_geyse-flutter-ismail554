@@ -32,8 +32,8 @@ class SelectTimeProvider extends ChangeNotifier {
       );
 
       if (kDebugMode) {
-        print("Time List API Status: ${response.statusCode}");
-        print("Time List API Response: ${response.body}");
+        debugPrint("Time List API Status: ${response.statusCode}");
+        debugPrint("Time List API Response: ${response.body}");
       }
 
       if (response.statusCode == 200) {
@@ -42,13 +42,13 @@ class SelectTimeProvider extends ChangeNotifier {
         timeList = parsed.results;
       } else {
         if (kDebugMode) {
-          print("Failed to fetch: ${response.statusCode}");
-          print("Response body: ${response.body}");
+          debugPrint("Failed to fetch: ${response.statusCode}");
+          debugPrint("Response body: ${response.body}");
         }
       }
     } catch (e) {
       if (kDebugMode) {
-        print("Error fetching select times: $e");
+        debugPrint("Error fetching select times: $e");
       }
     } finally {
       isLoading = false;

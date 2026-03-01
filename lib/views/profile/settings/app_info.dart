@@ -210,7 +210,7 @@ class AboutAppScreen extends StatelessWidget {
                             vertical: 8.r,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.orange.withOpacity(0.05),
+                            color: Colors.orange.withValues(alpha: 0.05),
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Text(
@@ -250,7 +250,7 @@ class AboutAppScreen extends StatelessWidget {
       border: Border.all(color: Colors.grey.shade200),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.02),
+          color: Colors.black.withValues(alpha: 0.02),
           blurRadius: 10,
           offset: Offset(0, 4),
         ),

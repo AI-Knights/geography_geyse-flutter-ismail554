@@ -57,7 +57,7 @@ class _NewPass_screenState extends State<NewPass_screen> {
     return Scaffold(
       backgroundColor: AppColors.bgColor,
       appBar: AppBar(
-        backgroundColor: AppColors.bgColor.withOpacity(01),
+        backgroundColor: AppColors.bgColor.withValues(alpha: 01),
         title: Text("Back", style: FontManager.appBarText()),
         centerTitle: false,
       ),

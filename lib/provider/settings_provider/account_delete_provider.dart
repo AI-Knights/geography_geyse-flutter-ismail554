@@ -40,6 +40,8 @@ class AccountDeleteProvider extends ChangeNotifier {
       );
 
       if (response.statusCode == 200 || response.statusCode == 204) {
+        if (!context.mounted) return false;
+
         // Success - Clear all provider data before logout
         final userProvider = Provider.of<UserProvider>(context, listen: false);
         final statsProvider = Provider.of<UserStatsProvider>(

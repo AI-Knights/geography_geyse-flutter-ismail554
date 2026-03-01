@@ -104,7 +104,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
         border: Border.all(color: AppColors.buttonColor, width: 2),
         boxShadow: [
           BoxShadow(
-            color: AppColors.buttonColor.withOpacity(0.2),
+            color: AppColors.buttonColor.withValues(alpha: 0.2),
             blurRadius: 8,
             offset: Offset(0, 2),
           ),
@@ -295,8 +295,9 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                                     );
                                   }
                                 } finally {
-                                  if (mounted)
+                                  if (mounted) {
                                     setState(() => _isLoading = false);
+                                  }
                                 }
                               },
                         style: ElevatedButton.styleFrom(

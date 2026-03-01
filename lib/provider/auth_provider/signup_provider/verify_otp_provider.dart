@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:geography_geyser/secure_storage/secure_storage_helper.dart';
 import 'package:geography_geyser/services/api_service.dart';
 import 'package:http/http.dart' as http;
@@ -14,7 +13,7 @@ class VerifyProvider extends ChangeNotifier {
     BuildContext context,
   ) async {
     isLoading.value = true;
-    print(' Verifying OTP: $otp');
+    debugPrint(' Verifying OTP: $otp');
 
     try {
       // Get verification token from SecureStorage
@@ -25,7 +24,7 @@ class VerifyProvider extends ChangeNotifier {
         throw {'message': 'Verification token not found. Please signup again.'};
       }
 
-      print(verificationToken);
+      debugPrint(verificationToken);
       // Prepare body
       final body = {'otp': otp, 'verificationToken': verificationToken};
 
@@ -36,14 +35,14 @@ class VerifyProvider extends ChangeNotifier {
         body: jsonEncode(body),
       );
 
-      print('Response Status Code: ${response.statusCode}');
-      print('Response Body: ${response.body}');
+      debugPrint('Response Status Code: ${response.statusCode}');
+      debugPrint('Response Body: ${response.body}');
 
       final Map<String, dynamic> responseData = jsonDecode(response.body);
 
       // Handle success
       if (response.statusCode == 200) {
-        print("✅ OTP Verification Successful!");
+        debugPrint("✅ OTP Verification Successful!");
         return {
           'success': true,
           'message': responseData['message'] ?? 'OTP verified successfully',
@@ -55,7 +54,7 @@ class VerifyProvider extends ChangeNotifier {
         };
       }
     } catch (e) {
-      print(" Verify OTP Error: $e");
+      debugPrint(" Verify OTP Error: $e");
       rethrow;
     } finally {
       isLoading.value = false;

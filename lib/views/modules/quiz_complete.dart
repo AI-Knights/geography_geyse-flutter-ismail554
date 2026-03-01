@@ -4,8 +4,6 @@ import 'package:geography_geyser/core/app_colors.dart';
 import 'package:geography_geyser/core/app_spacing.dart';
 import 'package:geography_geyser/core/app_strings.dart';
 import 'package:geography_geyser/core/font_manager.dart';
-import 'package:geography_geyser/views/custom_widgets/custom_login_button.dart';
-import 'package:geography_geyser/views/custom_widgets/module_button.dart';
 import 'package:geography_geyser/views/modules/quiz_screen.dart';
 
 ///

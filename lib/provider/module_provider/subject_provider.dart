@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:async';
 import 'package:flutter/foundation.dart'; // <-- for compute
-import 'package:flutter/material.dart';
 import 'package:geography_geyser/models/module_model.dart';
 import 'package:geography_geyser/services/api_service.dart';
 import 'package:geography_geyser/secure_storage/secure_storage_helper.dart';

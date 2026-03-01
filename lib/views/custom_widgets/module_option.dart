@@ -24,7 +24,7 @@ class ModuleOption extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
         decoration: BoxDecoration(
           color: isSelected
-              ? AppColors.buttonColor.withOpacity(0.1)
+              ? AppColors.buttonColor.withValues(alpha: 0.1)
               : Colors.white,
           borderRadius: BorderRadius.circular(8.r),
           border: Border.all(

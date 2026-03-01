@@ -145,7 +145,7 @@ class _QuizResult_ScreenState extends State<QuizResult_Screen> {
                       borderRadius: BorderRadius.circular(12.r),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withValues(alpha: 0.1),
                           blurRadius: 8,
                           offset: Offset(0, 2),
                         ),
@@ -233,7 +233,7 @@ class _QuizResult_ScreenState extends State<QuizResult_Screen> {
                           ),
                         ),
                       );
-                    }).toList(),
+                    }),
                     AppSpacing.h32,
                   ],
 
@@ -436,7 +436,7 @@ class _QuizResult_ScreenState extends State<QuizResult_Screen> {
             width: 40.w,
             height: 40.w,
             decoration: BoxDecoration(
-              color: AppColors.white.withOpacity(0.2),
+              color: AppColors.white.withValues(alpha: 0.2),
               shape: BoxShape.circle,
             ),
             child: Icon(Icons.flash_on, color: AppColors.white, size: 20.sp),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 class ModuleModel {
   final String id;
   final String moduleName;
@@ -42,10 +43,10 @@ class ModuleModel {
 
       if (T == String) return value.toString() as T;
     } catch (e) {
-      print('[safeParse] ▲ Field "$fieldName": $e');
+      debugPrint('[safeParse] ▲ Field "$fieldName": $e');
     }
 
-    print(
+    debugPrint(
         '[safeParse] ✕ Type mismatch in "$fieldName": expected $T, got ${value.runtimeType}');
     return null;
   }

@@ -19,8 +19,8 @@ class SignupProvider extends ChangeNotifier {
     BuildContext context,
   ) async {
     isLoading.value = true;
-    print('🔵 Trying signup with: $email / $fullName / $password');
-    print('🔵 API URL: ${ApiService.signupUrl}');
+    debugPrint('🔵 Trying signup with: $email / $fullName / $password');
+    debugPrint('🔵 API URL: ${ApiService.signupUrl}');
 
     try {
       final requestBody = {
@@ -29,7 +29,7 @@ class SignupProvider extends ChangeNotifier {
         'password': password,
       };
 
-      print('🔵 Request Body: ${jsonEncode(requestBody)}');
+      debugPrint('🔵 Request Body: ${jsonEncode(requestBody)}');
 
       final response = await http
           .post(
@@ -49,9 +49,9 @@ class SignupProvider extends ChangeNotifier {
             },
           );
 
-      print('🔵 Response Status Code: ${response.statusCode}');
-      print('🔵 Response Headers: ${response.headers}');
-      print('🔵 Response Body: ${response.body}');
+      debugPrint('🔵 Response Status Code: ${response.statusCode}');
+      debugPrint('🔵 Response Headers: ${response.headers}');
+      debugPrint('🔵 Response Body: ${response.body}');
 
       // Check if response body is empty
       if (response.body.isEmpty) {
@@ -66,7 +66,7 @@ class SignupProvider extends ChangeNotifier {
       try {
         responseData = jsonDecode(response.body) as Map<String, dynamic>;
       } catch (e) {
-        print('❌ JSON Parse Error: $e');
+        debugPrint('❌ JSON Parse Error: $e');
         throw {
           'success': false,
           'message': 'Invalid response from server. Please try again.',
@@ -76,7 +76,7 @@ class SignupProvider extends ChangeNotifier {
 
       // Handle successful response
       if (response.statusCode == 200 || response.statusCode == 201) {
-        print('✅ Signup successful!');
+        debugPrint('✅ Signup successful!');
         await _storeSignupData(responseData);
         return responseData;
       } else {
@@ -93,7 +93,7 @@ class SignupProvider extends ChangeNotifier {
         };
       }
     } on SocketException catch (e) {
-      print('❌ Network Error (SocketException): $e');
+      debugPrint('❌ Network Error (SocketException): $e');
       throw {
         'success': false,
         'message':
@@ -101,14 +101,14 @@ class SignupProvider extends ChangeNotifier {
         'error': e.toString(),
       };
     } on HttpException catch (e) {
-      print('❌ HTTP Error: $e');
+      debugPrint('❌ HTTP Error: $e');
       throw {
         'success': false,
         'message': 'HTTP error occurred. Please try again.',
         'error': e.toString(),
       };
     } on TimeoutException catch (e) {
-      print('❌ Timeout Error: $e');
+      debugPrint('❌ Timeout Error: $e');
       throw {
         'success': false,
         'message':
@@ -116,15 +116,15 @@ class SignupProvider extends ChangeNotifier {
         'error': e.toString(),
       };
     } on FormatException catch (e) {
-      print('❌ Format Error: $e');
+      debugPrint('❌ Format Error: $e');
       throw {
         'success': false,
         'message': 'Invalid response format. Please try again.',
         'error': e.toString(),
       };
     } catch (e) {
-      print('❌ Signup Error: $e');
-      print('❌ Error Type: ${e.runtimeType}');
+      debugPrint('❌ Signup Error: $e');
+      debugPrint('❌ Error Type: ${e.runtimeType}');
 
       // If it's already a Map (from our error handling), rethrow it
       if (e is Map<String, dynamic>) {
@@ -147,7 +147,7 @@ class SignupProvider extends ChangeNotifier {
     // 🧠 Save verification token securely (for OTP verify)
     if (data.containsKey('verificationToken')) {
       await SecureStorageHelper.setVerificationToken(data['verificationToken']);
-      print("✅ Verification Token Saved Securely!");
+      debugPrint("✅ Verification Token Saved Securely!");
     }
 
     // 🧠 Optional: save email and user id for later use
@@ -163,12 +163,12 @@ class SignupProvider extends ChangeNotifier {
     final secure = FlutterSecureStorage();
     final prefs = await SharedPreferences.getInstance();
 
-    print("========== 🧠 Signup Storage Data ==========");
-    print("🔐 Secure Storage:");
-    (await secure.readAll()).forEach((k, v) => print("  $k : $v"));
+    debugPrint("========== 🧠 Signup Storage Data ==========");
+    debugPrint("🔐 Secure Storage:");
+    (await secure.readAll()).forEach((k, v) => debugPrint("  $k : $v"));
 
-    print("📦 Shared Preferences:");
-    prefs.getKeys().forEach((k) => print("  $k : ${prefs.get(k)}"));
-    print("===========================================");
+    debugPrint("📦 Shared Preferences:");
+    prefs.getKeys().forEach((k) => debugPrint("  $k : ${prefs.get(k)}"));
+    debugPrint("===========================================");
   }
 }

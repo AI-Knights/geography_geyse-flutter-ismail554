@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geography_geyser/core/app_colors.dart';
 import 'package:geography_geyser/core/font_manager.dart';
 
 class Custom_Q_quantity extends StatelessWidget {
@@ -36,7 +35,7 @@ class Custom_Q_quantity extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.15),
+              color: Colors.grey.withValues(alpha: 0.15),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),

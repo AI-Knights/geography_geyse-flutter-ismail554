@@ -580,9 +580,9 @@ class _QuizScreenState extends State<QuizScreen> {
       }
 
       if (isCorrectAnswer) {
-        return Colors.green.withOpacity(0.2); // Light green for correct
+        return Colors.green.withValues(alpha: 0.2); // Light green for correct
       } else if (isSelected) {
-        return Colors.red.withOpacity(0.2); // Light red for incorrect
+        return Colors.red.withValues(alpha: 0.2); // Light red for incorrect
       }
       return backgroundColor;
     }

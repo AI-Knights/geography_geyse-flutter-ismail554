@@ -203,7 +203,7 @@ class _PrivacySettings_ScreenState extends State<PrivacySettings_Screen> {
                                 _newPassController.text,
                               );
 
-                              if (!mounted) return;
+                              if (!context.mounted) return;
 
                               if (provider.isSuccess) {
                                 CustomSnackBar.show(

@@ -44,8 +44,8 @@ class QuizFinishProvider extends ChangeNotifier {
       );
 
       if (kDebugMode) {
-        print("Quiz Finish API Status: ${response.statusCode}");
-        print("Quiz Finish API Response: ${response.body}");
+        debugPrint("Quiz Finish API Status: ${response.statusCode}");
+        debugPrint("Quiz Finish API Response: ${response.body}");
       }
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -59,7 +59,7 @@ class QuizFinishProvider extends ChangeNotifier {
       } else {
         errorMessage = "Failed to finish quiz: ${response.statusCode}";
         if (kDebugMode) {
-          print("Response body: ${response.body}");
+          debugPrint("Response body: ${response.body}");
         }
         isLoading = false;
         notifyListeners();
@@ -68,7 +68,7 @@ class QuizFinishProvider extends ChangeNotifier {
     } catch (e) {
       errorMessage = "Error finishing quiz: $e";
       if (kDebugMode) {
-        print("Error finishing quiz: $e");
+        debugPrint("Error finishing quiz: $e");
       }
       isLoading = false;
       notifyListeners();

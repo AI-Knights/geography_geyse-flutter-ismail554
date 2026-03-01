@@ -68,7 +68,7 @@ class _ModuleHomeScreenState extends State<ModuleHomeScreen> {
                 if (mounted) {
                   provider.fetchSubjects().catchError((error) {
                     AppLogger.error('Failed to load modules', error);
-                    if (mounted) {
+                    if (context.mounted) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
@@ -195,7 +195,7 @@ class _ModuleHomeScreenState extends State<ModuleHomeScreen> {
           borderRadius: BorderRadius.circular(8.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 8,
               spreadRadius: 2,
               offset: const Offset(0, 3),

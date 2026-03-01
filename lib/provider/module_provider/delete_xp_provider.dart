@@ -35,8 +35,8 @@ class DeleteXpProvider extends ChangeNotifier {
       );
 
       if (kDebugMode) {
-        print("Delete XP API Status: ${response.statusCode}");
-        print("Delete XP API Response: ${response.body}");
+        debugPrint("Delete XP API Status: ${response.statusCode}");
+        debugPrint("Delete XP API Response: ${response.body}");
       }
 
       if (response.statusCode == 200 || response.statusCode == 201) {
@@ -49,7 +49,7 @@ class DeleteXpProvider extends ChangeNotifier {
       } else {
         errorMessage = "Failed to delete XP: ${response.statusCode}";
         if (kDebugMode) {
-          print("Response body: ${response.body}");
+          debugPrint("Response body: ${response.body}");
         }
         isLoading = false;
         notifyListeners();
@@ -58,7 +58,7 @@ class DeleteXpProvider extends ChangeNotifier {
     } catch (e) {
       errorMessage = "Error deleting XP: $e";
       if (kDebugMode) {
-        print("Error deleting XP: $e");
+        debugPrint("Error deleting XP: $e");
       }
       isLoading = false;
       notifyListeners();

@@ -35,8 +35,8 @@ class QuizProvider extends ChangeNotifier {
       );
 
       if (kDebugMode) {
-        print("Quiz API Status: ${response.statusCode}");
-        print("Quiz API Response: ${response.body}");
+        debugPrint("Quiz API Status: ${response.statusCode}");
+        debugPrint("Quiz API Response: ${response.body}");
       }
 
       if (response.statusCode == 200) {
@@ -46,14 +46,14 @@ class QuizProvider extends ChangeNotifier {
       } else {
         errorMessage = "There is an error. Try agian ${response.statusCode}";
         if (kDebugMode) {
-          print("Response body: ${response.body}");
+          debugPrint("Response body: ${response.body}");
         }
       }
     } catch (e) {
       // errorMessage = "Error fetching quiz: $e";
       errorMessage = "There is an error. Try agian";
       if (kDebugMode) {
-        print("Error fetching quiz: $e");
+        debugPrint("Error fetching quiz: $e");
       }
     } finally {
       isLoading = false;
@@ -87,8 +87,8 @@ class QuizProvider extends ChangeNotifier {
       );
 
       if (kDebugMode) {
-        print("Synoptic Quiz API Status: ${response.statusCode}");
-        print("Synoptic Quiz API Response: ${response.body}");
+        debugPrint("Synoptic Quiz API Status: ${response.statusCode}");
+        debugPrint("Synoptic Quiz API Response: ${response.body}");
       }
 
       if (response.statusCode == 200) {
@@ -98,13 +98,13 @@ class QuizProvider extends ChangeNotifier {
       } else {
         errorMessage = "Failed to fetch synoptic quiz: ${response.statusCode}";
         if (kDebugMode) {
-          print("Response body: ${response.body}");
+          debugPrint("Response body: ${response.body}");
         }
       }
     } catch (e) {
       errorMessage = "Error fetching synoptic quiz: $e";
       if (kDebugMode) {
-        print("Error fetching synoptic quiz: $e");
+        debugPrint("Error fetching synoptic quiz: $e");
       }
     } finally {
       isLoading = false;

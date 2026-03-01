@@ -298,7 +298,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                       );
                                     },
-                                  text: ' ' + AppStrings.createAccountTitle,
+                                  text: ' ${AppStrings.createAccountTitle}',
                                   style: TextStyle(
                                     fontSize: 16.sp,
                                     color: AppColors.primaryColor,

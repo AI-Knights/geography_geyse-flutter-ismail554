@@ -8,7 +8,7 @@ import 'package:geography_geyser/core/font_manager.dart';
 class TimeoutDialog extends StatelessWidget {
   final VoidCallback onOkPressed;
 
-  const TimeoutDialog({Key? key, required this.onOkPressed}) : super(key: key);
+  const TimeoutDialog({super.key, required this.onOkPressed});
 
   @override
   Widget build(BuildContext context) {

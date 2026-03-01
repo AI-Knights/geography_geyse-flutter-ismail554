@@ -10,12 +10,12 @@ class CustomToggleButton extends StatefulWidget {
   final String? initialSelection; // initial selected option
 
   const CustomToggleButton({
-    Key? key,
+    super.key,
     required this.option1,
     required this.option2,
     this.onChanged,
     this.initialSelection,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomToggleButton> createState() => _CustomToggleButtonState();
