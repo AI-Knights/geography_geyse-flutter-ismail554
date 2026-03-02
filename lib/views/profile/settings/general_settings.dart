@@ -6,6 +6,7 @@ import 'package:geography_geyser/core/app_spacing.dart';
 import 'package:geography_geyser/core/app_strings.dart';
 import 'package:geography_geyser/core/font_manager.dart';
 import 'package:geography_geyser/provider/home_provider.dart';
+import 'package:geography_geyser/provider/user_performance_provider.dart';
 import 'package:geography_geyser/secure_storage/secure_storage_helper.dart';
 import 'package:geography_geyser/services/api_service.dart';
 import 'package:geography_geyser/views/custom_widgets/buildTextField.dart';
@@ -221,8 +222,16 @@ class _GeneralSettings_ScreenState extends State<GeneralSettings_Screen> {
           );
           await userProvider.fetchUserData();
 
-          // Update fields with new data
-          _populateFields(userProvider.userModel);
+          final profileProvider = Provider.of<ProfileProvider>(
+            context,
+            listen: false,
+          );
+          await profileProvider.fetchProfile();
+
+          // Navigate back to the previous screen
+          if (context.mounted) {
+            Navigator.pop(context);
+          }
         }
       } else {
         // Try to parse error message, fallback to status text
