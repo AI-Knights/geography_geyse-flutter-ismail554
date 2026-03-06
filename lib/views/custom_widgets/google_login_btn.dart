@@ -30,9 +30,7 @@ class _GoogleLoginBtnState extends State<GoogleLoginBtn> {
                 });
 
                 try {
-                  final response = await LoginProvider.signInWithGoogle(
-                    context,
-                  );
+                  final response = await LoginProvider.signInWithGoogle();
 
                   if (!context.mounted) return;
 

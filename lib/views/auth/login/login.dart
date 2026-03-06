@@ -189,7 +189,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     final response = await LoginProvider.login(
                                       email,
                                       password,
-                                      context,
                                     );
 
                                     if (!context.mounted) return;
