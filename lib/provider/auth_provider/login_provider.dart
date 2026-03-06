@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:geography_geyser/secure_storage/secure_storage_helper.dart';
 import 'package:geography_geyser/services/api_service.dart';
-import 'package:http/http.dart' as http;
+import 'package:geography_geyser/services/https_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -15,40 +15,38 @@ class LoginProvider extends ChangeNotifier {
   static Future<Map<String, dynamic>> login(
     String email,
     String password,
-    BuildContext context,
   ) async {
     isLoading.value = true;
     debugPrint('Trying login with: $email / $password');
 
     try {
-      final response = await http.post(
-        Uri.parse(ApiService.loginUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'email': email, 'password': password}),
+      final response = await HttpManager.apiRequest(
+        url: ApiService.loginUrl,
+        method: Method.post,
+        body: {'email': email, 'password': password},
+        name: 'Login',
+        statusCode: 200,
       );
 
-      debugPrint('Response Status Code: ${response.statusCode}');
-      debugPrint('Response Body: ${response.body}');
+      return response.fold(
+        (error) {
+          throw error;
+        },
+        (data) async {
+          final Map<String, dynamic> responseData = jsonDecode(data);
+          await _storeLoginData(responseData);
 
-      final Map<String, dynamic> responseData = jsonDecode(response.body);
+          debugPrint('Login Successful!');
+          if (responseData.containsKey('access_token')) {
+            debugPrint('Access Token: ${responseData['access_token']}');
+          }
+          if (responseData.containsKey('refresh_token')) {
+            debugPrint('Refresh Token: ${responseData['refresh_token']}');
+          }
 
-      if (response.statusCode == 200) {
-        await _storeLoginData(responseData);
-
-        // Print tokens after successful login
-        debugPrint('Login Successful!');
-        if (responseData.containsKey('access_token')) {
-          debugPrint('Access Token: ${responseData['access_token']}');
-        }
-        if (responseData.containsKey('refresh_token')) {
-          debugPrint('Refresh Token: ${responseData['refresh_token']}');
-        }
-
-        return responseData;
-      } else {
-        // throw API error message
-        throw responseData;
-      }
+          return responseData;
+        },
+      );
     } catch (e) {
       debugPrint("Login Error: $e");
       rethrow;
@@ -61,39 +59,30 @@ class LoginProvider extends ChangeNotifier {
   static Future<void> _storeLoginData(Map<String, dynamic> data) async {
     if (data.containsKey('access_token')) {
       await SecureStorageHelper.setToken(data['access_token']);
-      // print(' Access Token stored in FlutterSecureStorage');
     }
     if (data.containsKey('refresh_token')) {
       await SecureStorageHelper.setRefreshToken(data['refresh_token']);
-      // print(' Refresh Token stored in FlutterSecureStorage');
     }
 
-    // Example extra: store user email in SharedPreferences
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('user_email', data['email'] ?? '');
   }
 
   // ---------------- GOOGLE SIGN IN ----------------
-  static Future<Map<String, dynamic>> signInWithGoogle(
-    BuildContext context,
-  ) async {
+  static Future<Map<String, dynamic>> signInWithGoogle() async {
     isLoading.value = true;
 
     try {
-      // ১. Google Sign-In client তৈরি
       final GoogleSignIn googleSignIn = GoogleSignIn(
         scopes: ['email', 'profile'],
       );
 
-      // ২. User কে sign-in করতে বলা (popup দেখাবে)
       final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
-      // User যদি cancel করে
       if (googleUser == null) {
         throw {'message': 'Google sign-in was canceled'};
       }
 
-      // ৩. শুধু email নিবো
       final String email = googleUser.email;
       if (email.isEmpty) {
         throw {'message': 'Failed to get email from Google'};
@@ -101,79 +90,37 @@ class LoginProvider extends ChangeNotifier {
 
       debugPrint('📧 Got email: $email');
 
-      // ৪. তোমার API-তে পাঠাচ্ছি
-      final response = await http.post(
-        Uri.parse(ApiService.googleLoginUrl),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({'email': email}),
+      final response = await HttpManager.apiRequest(
+        url: ApiService.googleLoginUrl,
+        method: Method.post,
+        body: {'email': email},
+        name: 'GoogleLogin',
+        statusCode: 200,
       );
 
-      debugPrint('API Status: ${response.statusCode}');
-      debugPrint('API Body: ${response.body}');
-
-      final Map<String, dynamic> responseData = jsonDecode(response.body);
-
-      // ৫. Success case
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        // email response-এ না থাকলে add করে দিচ্ছি (optional)
-        responseData['email'] = email;
-
-        // token গুলো save
-        await _storeLoginData(responseData);
-
-        // নতুন user হলে dialog (যেটা আগে ছিল)
-        if (responseData['is_new_user'] == true && context.mounted) {
-          showDialog(
-            context: context,
-            builder: (ctx) => AlertDialog(
-              title: const Text('Update Profile'),
-              content: const Text(
-                'Please update your profile and set a password in settings.',
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(ctx),
-                  child: const Text('OK'),
-                ),
-              ],
-            ),
-          );
-        }
-
-        debugPrint('🎉 Google Login Successful!');
-        return responseData;
-      } else {
-        // API error
-        throw responseData;
-      }
+      return response.fold(
+        (error) {
+          throw error;
+        },
+        (data) async {
+          final Map<String, dynamic> responseData = jsonDecode(data);
+          responseData['email'] = email;
+          await _storeLoginData(responseData);
+          debugPrint('🎉 Google Login Successful!');
+          return responseData;
+        },
+      );
     } catch (e) {
       debugPrint('Google Login Error: $e');
-
-      String message = 'Google login failed';
-
-      if (e is Map && e['message'] != null) {
-        message = e['message'].toString();
-      } else if (e.toString().contains('network')) {
-        message = 'Please check your internet connection';
-      }
-
-      if (context.mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(message)));
-      }
-
-      rethrow; // যাতে button-এর try-catch ধরতে পারে
+      rethrow;
     } finally {
       isLoading.value = false;
     }
   }
 
   static Future<void> logout() async {
-    // Sign out from Google Sign-In
     await GoogleSignIn().signOut();
 
-    // Clear all stored data
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
 

@@ -4,6 +4,7 @@ import 'package:geography_geyser/core/app_spacing.dart';
 import 'package:geography_geyser/core/app_strings.dart';
 import 'package:geography_geyser/provider/auth_provider/login_provider.dart';
 import 'package:geography_geyser/views/home/homepage.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 import 'package:geography_geyser/views/home/op_mod_settings.dart';
 
 class GoogleLoginBtn extends StatefulWidget {
@@ -30,9 +31,7 @@ class _GoogleLoginBtnState extends State<GoogleLoginBtn> {
                 });
 
                 try {
-                  final response = await LoginProvider.signInWithGoogle(
-                    context,
-                  );
+                  final response = await LoginProvider.signInWithGoogle();
 
                   if (!context.mounted) return;
 
@@ -55,9 +54,7 @@ class _GoogleLoginBtnState extends State<GoogleLoginBtn> {
                   if (e is Map && e['message'] != null) {
                     message = e['message'].toString();
                   }
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(SnackBar(content: Text(message)));
+                  CustomSnackBar.show(context, message: message, isError: true);
                 } finally {
                   if (mounted) {
                     setState(() {

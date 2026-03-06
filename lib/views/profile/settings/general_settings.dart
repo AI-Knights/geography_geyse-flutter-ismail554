@@ -11,6 +11,7 @@ import 'package:geography_geyser/secure_storage/secure_storage_helper.dart';
 import 'package:geography_geyser/services/api_service.dart';
 import 'package:geography_geyser/views/custom_widgets/buildTextField.dart';
 import 'package:geography_geyser/views/custom_widgets/custom_login_button.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -103,21 +104,19 @@ class _GeneralSettings_ScreenState extends State<GeneralSettings_Screen> {
       }
     } catch (e) {
       debugPrint('${source.name} error: $e');
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Unable to access ${source.name}. Please check permissions.',
-          ),
-          backgroundColor: Colors.red,
-        ),
-      );
+      if (mounted) {
+        CustomSnackBar.show(
+          context,
+          message: 'Unable to access ${source.name}. Please check permissions.',
+          isError: true,
+        );
+      }
     } finally {
-      if (context.mounted)
+      if (mounted) {
         setState(() {
-          _imageFile =
-              null; // Ensuring build check compliance, though not strictly required
+          _imageFile = null;
         });
+      }
     }
   }
 
@@ -153,9 +152,11 @@ class _GeneralSettings_ScreenState extends State<GeneralSettings_Screen> {
 
   Future<void> _updateProfile() async {
     if (_nameController.text.trim().isEmpty) {
-      ScaffoldMessenger.of(
+      CustomSnackBar.show(
         context,
-      ).showSnackBar(const SnackBar(content: Text('Please enter your name')));
+        message: 'Please enter your name',
+        isError: true,
+      );
       return;
     }
 
@@ -196,20 +197,16 @@ class _GeneralSettings_ScreenState extends State<GeneralSettings_Screen> {
         if (!context.mounted) return;
         try {
           final data = jsonDecode(response.body);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(data['message'] ?? 'Profile updated!'),
-              backgroundColor: Colors.green,
-            ),
+          CustomSnackBar.show(
+            context,
+            message: data['message'] ?? 'Profile updated!',
           );
         } catch (e) {
           // If 200 but not valid JSON (unexpected), just show success with default message
-          if (context.mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Profile updated successfully!'),
-                backgroundColor: Colors.green,
-              ),
+          if (mounted) {
+            CustomSnackBar.show(
+              context,
+              message: 'Profile updated successfully!',
             );
           }
         }
@@ -262,10 +259,9 @@ class _GeneralSettings_ScreenState extends State<GeneralSettings_Screen> {
       if (msg.startsWith('Exception: ')) {
         msg = msg.substring(11); // Remove "Exception: " prefix
       }
-      if (!context.mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(msg), backgroundColor: Colors.red));
+      if (mounted) {
+        CustomSnackBar.show(context, message: msg, isError: true);
+      }
     } finally {
       if (context.mounted) setState(() => _isLoading = false);
     }

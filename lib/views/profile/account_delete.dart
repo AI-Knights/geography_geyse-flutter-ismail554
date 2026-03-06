@@ -8,6 +8,7 @@ import 'package:geography_geyser/provider/settings_provider/account_delete_provi
 
 import 'package:geography_geyser/views/custom_widgets/buildTextField.dart';
 import 'package:geography_geyser/views/custom_widgets/custom_login_button.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 import 'package:provider/provider.dart';
 
 class AccountDelete extends StatefulWidget {
@@ -74,10 +75,10 @@ class _AccountDeleteState extends State<AccountDelete> {
                               _passwordController.text,
                             );
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("Please enter your password"),
-                              ),
+                            CustomSnackBar.show(
+                              context,
+                              message: "Please enter your password",
+                              isError: true,
                             );
                           }
                         },

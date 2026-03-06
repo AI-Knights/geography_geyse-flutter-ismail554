@@ -8,6 +8,7 @@ import 'package:geography_geyser/core/font_manager.dart';
 import 'package:geography_geyser/provider/settings_provider/optional_module_provider.dart';
 import 'package:geography_geyser/views/custom_widgets/custom_login_button.dart';
 import 'package:geography_geyser/views/custom_widgets/custom_toggle_button.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 import 'package:geography_geyser/views/home/homepage.dart';
 import 'package:provider/provider.dart';
 
@@ -224,13 +225,10 @@ class _OptionalModuleSettingsState extends State<OptionalModuleSettings> {
 
                             if (context.mounted) {
                               if (success) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
+                                CustomSnackBar.show(
+                                  context,
+                                  message:
                                       'Module selections saved successfully!',
-                                    ),
-                                    backgroundColor: Colors.green,
-                                  ),
                                 );
 
                                 // Navigate to home after successful save
@@ -244,15 +242,12 @@ class _OptionalModuleSettingsState extends State<OptionalModuleSettings> {
                               } else {
                                 // Error message is already shown in provider
                                 if (provider.errorMessage != null) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        AppLogger.getSafeErrorMessage(
-                                          provider.errorMessage!,
-                                        ),
-                                      ),
-                                      backgroundColor: Colors.red,
+                                  CustomSnackBar.show(
+                                    context,
+                                    message: AppLogger.getSafeErrorMessage(
+                                      provider.errorMessage!,
                                     ),
+                                    isError: true,
                                   );
                                 }
                               }

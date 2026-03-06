@@ -7,6 +7,7 @@ import 'package:geography_geyser/core/app_strings.dart';
 import 'package:geography_geyser/core/font_manager.dart';
 import 'package:geography_geyser/custom_widgets/custom_module.dart';
 import 'package:geography_geyser/views/custom_widgets/custom_login_button.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 import 'package:geography_geyser/provider/module_provider/subject_provider.dart';
 import 'package:geography_geyser/views/home/homepage.dart';
 import 'package:geography_geyser/views/modules/select_time.dart';
@@ -68,14 +69,13 @@ class _ModuleHomeScreenState extends State<ModuleHomeScreen> {
                 if (mounted) {
                   provider.fetchSubjects().catchError((error) {
                     AppLogger.error('Failed to load modules', error);
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            AppLogger.getSafeErrorMessage(error.toString()),
-                          ),
-                          backgroundColor: Colors.red,
+                    if (mounted) {
+                      CustomSnackBar.show(
+                        context,
+                        message: AppLogger.getSafeErrorMessage(
+                          error.toString(),
                         ),
+                        isError: true,
                       );
                     }
                   });
