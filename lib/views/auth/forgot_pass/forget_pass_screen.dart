@@ -7,6 +7,7 @@ import 'package:geography_geyser/provider/forgot_password/forgot_pass_provider.d
 import 'package:geography_geyser/views/auth/forgot_pass/verify_screen.dart';
 import 'package:geography_geyser/views/custom_widgets/buildTextField.dart';
 import 'package:geography_geyser/views/custom_widgets/custom_login_button.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 import 'package:provider/provider.dart';
 
 ///
@@ -137,15 +138,11 @@ class _PassResetScreenState extends State<PassResetScreen> {
                                           final email = _emailController.text
                                               .trim();
                                           if (email.isEmpty) {
-                                            ScaffoldMessenger.of(
+                                            CustomSnackBar.show(
                                               context,
-                                            ).showSnackBar(
-                                              SnackBar(
-                                                content: Text(
+                                              message:
                                                   'Please enter your email',
-                                                ),
-                                                backgroundColor: Colors.red,
-                                              ),
+                                              isError: true,
                                             );
                                             return;
                                           }
@@ -158,15 +155,10 @@ class _PassResetScreenState extends State<PassResetScreen> {
 
                                             if (context.mounted) {
                                               // Show success message
-                                              ScaffoldMessenger.of(
+                                              CustomSnackBar.show(
                                                 context,
-                                              ).showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
+                                                message:
                                                     'OTP sent successfully!',
-                                                  ),
-                                                  backgroundColor: Colors.green,
-                                                ),
                                               );
 
                                               // Navigate to verify screen
@@ -187,16 +179,11 @@ class _PassResetScreenState extends State<PassResetScreen> {
                                                 forgotPasswordProvider
                                                         .errorMessage !=
                                                     null) {
-                                              ScaffoldMessenger.of(
+                                              CustomSnackBar.show(
                                                 context,
-                                              ).showSnackBar(
-                                                SnackBar(
-                                                  content: Text(
-                                                    forgotPasswordProvider
-                                                        .errorMessage!,
-                                                  ),
-                                                  backgroundColor: Colors.red,
-                                                ),
+                                                message: forgotPasswordProvider
+                                                    .errorMessage!,
+                                                isError: true,
                                               );
                                             }
                                           }

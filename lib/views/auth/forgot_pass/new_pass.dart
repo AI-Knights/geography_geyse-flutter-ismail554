@@ -7,6 +7,7 @@ import 'package:geography_geyser/provider/forgot_password/new_pass_set_provider.
 import 'package:geography_geyser/views/auth/forgot_pass/congratulations.dart';
 import 'package:geography_geyser/views/custom_widgets/buildTextField.dart';
 import 'package:geography_geyser/views/custom_widgets/custom_login_button.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 import 'package:provider/provider.dart';
 
 class NewPass_screen extends StatefulWidget {
@@ -179,13 +180,10 @@ class _NewPass_screenState extends State<NewPass_screen> {
 
                                   if (_passwordError != null ||
                                       _confirmPasswordError != null) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Please fix the errors above',
-                                        ),
-                                        backgroundColor: Colors.red,
-                                      ),
+                                    CustomSnackBar.show(
+                                      context,
+                                      message: 'Please fix the errors above',
+                                      isError: true,
                                     );
                                     return;
                                   }
@@ -202,13 +200,9 @@ class _NewPass_screenState extends State<NewPass_screen> {
                                           response['msg'] ??
                                           'Password reset successfully!';
 
-                                      ScaffoldMessenger.of(
+                                      CustomSnackBar.show(
                                         context,
-                                      ).showSnackBar(
-                                        SnackBar(
-                                          content: Text(successMessage),
-                                          backgroundColor: Colors.green,
-                                        ),
+                                        message: successMessage,
                                       );
 
                                       Navigator.pushAndRemoveUntil(
@@ -236,13 +230,10 @@ class _NewPass_screenState extends State<NewPass_screen> {
                                             errorMsg;
                                       }
 
-                                      ScaffoldMessenger.of(
+                                      CustomSnackBar.show(
                                         context,
-                                      ).showSnackBar(
-                                        SnackBar(
-                                          content: Text(errorMsg),
-                                          backgroundColor: Colors.red,
-                                        ),
+                                        message: errorMsg,
+                                        isError: true,
                                       );
                                     }
                                   }

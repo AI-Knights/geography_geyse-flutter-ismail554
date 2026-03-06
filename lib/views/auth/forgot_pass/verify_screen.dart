@@ -9,6 +9,7 @@ import 'package:geography_geyser/core/font_manager.dart';
 import 'package:geography_geyser/provider/forgot_password/forgot_pass_provider.dart';
 import 'package:geography_geyser/secure_storage/secure_storage_helper.dart';
 import 'package:geography_geyser/views/auth/forgot_pass/new_pass.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 
@@ -311,13 +312,9 @@ class _VerifyScreenState extends State<VerifyScreen> {
                                                   response['msg'] ??
                                                   'OTP verified successfully!';
 
-                                              ScaffoldMessenger.of(
+                                              CustomSnackBar.show(
                                                 context,
-                                              ).showSnackBar(
-                                                SnackBar(
-                                                  content: Text(successMessage),
-                                                  backgroundColor: Colors.green,
-                                                ),
+                                                message: successMessage,
                                               );
 
                                               Navigator.pushAndRemoveUntil(
@@ -348,26 +345,18 @@ class _VerifyScreenState extends State<VerifyScreen> {
                                                     errorMsg;
                                               }
 
-                                              ScaffoldMessenger.of(
+                                              CustomSnackBar.show(
                                                 context,
-                                              ).showSnackBar(
-                                                SnackBar(
-                                                  content: Text(errorMsg),
-                                                  backgroundColor: Colors.red,
-                                                ),
+                                                message: errorMsg,
+                                                isError: true,
                                               );
                                             }
                                           }
                                         } else {
-                                          ScaffoldMessenger.of(
+                                          CustomSnackBar.show(
                                             context,
-                                          ).showSnackBar(
-                                            SnackBar(
-                                              content: Text(
-                                                'Please enter 6-digit OTP',
-                                              ),
-                                              backgroundColor: Colors.red,
-                                            ),
+                                            message: 'Please enter 6-digit OTP',
+                                            isError: true,
                                           );
                                         }
                                       },
@@ -421,15 +410,11 @@ class _VerifyScreenState extends State<VerifyScreen> {
                                                   widget.email ?? _storedEmail;
                                               if (emailToUse == null ||
                                                   emailToUse.isEmpty) {
-                                                ScaffoldMessenger.of(
+                                                CustomSnackBar.show(
                                                   context,
-                                                ).showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
+                                                  message:
                                                       'Email not found. Please try again from start.',
-                                                    ),
-                                                    backgroundColor: Colors.red,
-                                                  ),
+                                                  isError: true,
                                                 );
                                                 return;
                                               }
@@ -439,16 +424,10 @@ class _VerifyScreenState extends State<VerifyScreen> {
                                                     emailToUse,
                                                   );
                                               if (context.mounted) {
-                                                ScaffoldMessenger.of(
+                                                CustomSnackBar.show(
                                                   context,
-                                                ).showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
+                                                  message:
                                                       'OTP resent successfully!',
-                                                    ),
-                                                    backgroundColor:
-                                                        Colors.green,
-                                                  ),
                                                 );
                                                 // Reset timer
                                                 setState(() {

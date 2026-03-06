@@ -5,6 +5,7 @@ import 'package:geography_geyser/core/app_spacing.dart';
 import 'package:geography_geyser/core/font_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 
 class AboutAppScreen extends StatelessWidget {
   const AboutAppScreen({super.key});
@@ -165,12 +166,11 @@ class AboutAppScreen extends StatelessWidget {
                     } catch (e) {
                       debugPrint('Could not launch email: $e');
                       if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
+                        CustomSnackBar.show(
+                          context,
+                          message:
                               'Could not launch email app. Please copy the email manually.',
-                            ),
-                          ),
+                          isError: true,
                         );
                       }
                     }

@@ -7,6 +7,7 @@ import 'package:geography_geyser/core/app_spacing.dart';
 import 'package:geography_geyser/core/app_strings.dart';
 import 'package:geography_geyser/core/font_manager.dart';
 import 'package:geography_geyser/provider/auth_provider/signup_provider/verify_otp_provider.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 import 'package:geography_geyser/views/auth/sign_up/reg_congratulations.dart';
 import 'package:pinput/pinput.dart';
 
@@ -234,11 +235,10 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                                 final otp = _pinController.text.trim();
 
                                 if (otp.length != 6) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text('Please enter 6-digit OTP'),
-                                      backgroundColor: Colors.red,
-                                    ),
+                                  CustomSnackBar.show(
+                                    context,
+                                    message: 'Please enter 6-digit OTP',
+                                    isError: true,
                                   );
                                   return;
                                 }
@@ -254,13 +254,9 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
 
                                   if (response['success'] == true) {
                                     if (context.mounted) {
-                                      ScaffoldMessenger.of(
+                                      CustomSnackBar.show(
                                         context,
-                                      ).showSnackBar(
-                                        SnackBar(
-                                          content: Text('OTP Verified ✅'),
-                                          backgroundColor: Colors.green,
-                                        ),
+                                        message: 'OTP Verified ✅',
                                       );
 
                                       // ✅ Navigate ONLY on success
@@ -287,11 +283,10 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                                   }
 
                                   if (context.mounted) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(message),
-                                        backgroundColor: Colors.red,
-                                      ),
+                                    CustomSnackBar.show(
+                                      context,
+                                      message: message,
+                                      isError: true,
                                     );
                                   }
                                 } finally {

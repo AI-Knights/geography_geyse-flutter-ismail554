@@ -18,7 +18,6 @@ class CustomSnackBar {
               color: Colors.white,
               size: 24.sp,
             ),
-
             AppSpacing.w12,
             Expanded(
               child: Text(
@@ -27,7 +26,7 @@ class CustomSnackBar {
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
-                  fontFamily: 'SegoeUI', // Using app's font
+                  fontFamily: 'SegoeUI',
                 ),
               ),
             ),
@@ -38,18 +37,18 @@ class CustomSnackBar {
             : const Color(0xFF2E7D32), // Modern Green
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(16.r),
         ),
-        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-        elevation: 6,
-        duration: const Duration(seconds: 1),
-        // action: SnackBarAction(
-        //   label: 'DISMISS',
-        //   textColor: Colors.white,
-        //   onPressed: () {
-        //     ScaffoldMessenger.of(context).hideCurrentSnackBar();
-        //   },
-        // ),
+        margin: EdgeInsets.only(
+          left: 20.w,
+          right: 20.w,
+          bottom: 30.h, // Clean floating padding above nav elements
+        ),
+        elevation: 8,
+        duration: const Duration(
+          milliseconds: 2500,
+        ), // Adjusted for readability
+        dismissDirection: DismissDirection.horizontal, // Easily swipe away
       ),
     );
   }
