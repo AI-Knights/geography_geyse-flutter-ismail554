@@ -12,6 +12,7 @@ import 'package:geography_geyser/views/auth/login/login.dart';
 import 'package:geography_geyser/views/profile/profile_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:geography_geyser/views/custom_widgets/custom_snackbar.dart';
 
 class AccountDeleteProvider extends ChangeNotifier {
   bool _isLoading = false;
@@ -74,9 +75,7 @@ class AccountDeleteProvider extends ChangeNotifier {
         await LoginProvider.logout();
 
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Account deleted successfully")),
-          );
+          CustomSnackBar.show(context, message: "Account deleted successfully");
           // Navigate to Login or Splash screen
           Navigator.pushAndRemoveUntil(
             context,
@@ -89,19 +88,17 @@ class AccountDeleteProvider extends ChangeNotifier {
         // Handle API errors (e.g., wrong password)
         final errorData = jsonDecode(response.body);
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(errorData['message'] ?? "Check your password"),
-            ),
+          CustomSnackBar.show(
+            context,
+            message: errorData['message'] ?? "Check your password",
+            isError: true,
           );
         }
         return false;
       }
     } catch (e) {
       if (context.mounted) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Error: $e")));
+        CustomSnackBar.show(context, message: "Error: $e", isError: true);
       }
       return false;
     } finally {
