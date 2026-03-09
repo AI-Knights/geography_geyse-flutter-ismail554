@@ -111,12 +111,6 @@ class _GeneralSettings_ScreenState extends State<GeneralSettings_Screen> {
           isError: true,
         );
       }
-    } finally {
-      if (mounted) {
-        setState(() {
-          _imageFile = null;
-        });
-      }
     }
   }
 
@@ -235,10 +229,21 @@ class _GeneralSettings_ScreenState extends State<GeneralSettings_Screen> {
         String errorMsg = 'Update failed (${response.statusCode})';
         try {
           final data = jsonDecode(response.body);
-          if (data['message'] != null)
+          if (data['message'] != null) {
             errorMsg = data['message'];
-          else if (data['error'] != null)
+          } else if (data['error'] != null) {
             errorMsg = data['error'];
+          } else if (data['detail'] != null) {
+            errorMsg = data['detail'];
+          } else if (data.isNotEmpty) {
+            // Extract DRF field errors (e.g., {"profile_pic": ["Upload a valid image."]})
+            final firstError = data.values.first;
+            if (firstError is List && firstError.isNotEmpty) {
+              errorMsg = firstError[0].toString();
+            } else {
+              errorMsg = firstError.toString();
+            }
+          }
         } catch (_) {
           // Body is not JSON (likely HTML)
           if (response.body.contains('<!DOCTYPE html>')) {

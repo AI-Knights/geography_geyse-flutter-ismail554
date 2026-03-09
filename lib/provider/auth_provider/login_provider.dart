@@ -74,6 +74,8 @@ class LoginProvider extends ChangeNotifier {
 
     try {
       final GoogleSignIn googleSignIn = GoogleSignIn(
+        clientId:
+            '581080373754-tvili4mkiqts4rjeacgoti52h2i39fld.apps.googleusercontent.com',
         scopes: ['email', 'profile'],
       );
 
