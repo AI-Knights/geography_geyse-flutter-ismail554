@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>581080373754-5a635qmm4sdih9v6eeac0l9fp1kd0hmg.apps.googleusercontent.com</string>
+	<string>581080373754-tvili4mkiqts4rjeacgoti52h2i39fld.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.581080373754-5a635qmm4sdih9v6eeac0l9fp1kd0hmg</string>
+	<string>com.googleusercontent.apps.581080373754-tvili4mkiqts4rjeacgoti52h2i39fld</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>581080373754-f3iu5qngv3d3h9e8b62h6has7fmtumbj.apps.googleusercontent.com</string>
+	<string>581080373754-24iagvgm59m4sfn8lf0e41s30jou0cn0.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD6C2z0UYTc9Iv0NtLp50ssB5RRsnY9JPQ</string>
 	<key>GCM_SENDER_ID</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.geographyGeyser</string>
+	<string>com.geographygeyser.app</string>
 	<key>PROJECT_ID</key>
 	<string>geography-geyser-app-cc7f8</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:581080373754:ios:5983da67d6ac98d4166c43</string>
+	<string>1:581080373754:ios:9e50975aa080184d166c43</string>
 </dict>
 </plist>

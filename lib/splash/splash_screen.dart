@@ -81,7 +81,12 @@ class _SplashScreenState extends State<SplashScreen> {
                     child: Text(
                       'Geography\nGeyser',
                       textAlign: TextAlign.center,
-                      style: FontManager.splashTitle(),
+                      textScaler: const TextScaler.linear(
+                        1.0,
+                      ), // Added to prevent system scaling inconsistencies
+                      style: FontManager.splashTitle().copyWith(
+                        decoration: TextDecoration.none,
+                      ), // Ensure no unwanted decorations
                     ),
                   ),
                   AppSpacing.h26,
